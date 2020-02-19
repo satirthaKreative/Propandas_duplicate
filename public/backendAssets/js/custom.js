@@ -1,0 +1,1 @@
+setTimeout(function(){ $(".alert-success").hide(); },3000);
