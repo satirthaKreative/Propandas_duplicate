@@ -31,3 +31,4 @@ Route::get('admin-password/reset/{token}','Admin\ResetPasswordController@showRes
 
 Route::resource('admin-category','Admin\AdmincategoryController');
 Route::resource('admin-question','Admin\AdminquestionController');
+Route::resource('admin-option','Admin\AdminoptionController');

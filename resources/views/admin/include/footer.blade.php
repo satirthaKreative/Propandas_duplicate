@@ -36,3 +36,6 @@
 
         <!-- custom js -->
         <script src="{{ asset('backendAssets/js/custom.js') }}" type="text/javascript"></script>  
+
+        <!-- custom admin js -->
+        <script src="{{ asset('backendAssets/js/admin-custom.js') }}" type="text/javascript"></script>  

@@ -15,6 +15,8 @@ class CreateAdminoptionsTable extends Migration
     {
         Schema::create('adminoptions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('ques_id');
+            $table->longText('option_label');
             $table->timestamps();
         });
     }
