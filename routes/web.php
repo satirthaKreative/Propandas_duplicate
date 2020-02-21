@@ -32,3 +32,7 @@ Route::get('admin-password/reset/{token}','Admin\ResetPasswordController@showRes
 Route::resource('admin-category','Admin\AdmincategoryController');
 Route::resource('admin-question','Admin\AdminquestionController');
 Route::resource('admin-option','Admin\AdminoptionController');
+Route::resource('admin-cateques','Admin\AdmincatequesController');
+
+Route::GET('/quesCateajaxcall','Admin\AdmincatequesController@quesCate_ajaxcall');
+Route::GET('/ques_ajax','Admin\AdmincatequesController@ques_ajax');

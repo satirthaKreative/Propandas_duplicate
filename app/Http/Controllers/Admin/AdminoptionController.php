@@ -81,9 +81,17 @@ class AdminoptionController extends Controller
      * @param  \App\adminoption  $adminoption
      * @return \Illuminate\Http\Response
      */
-    public function edit(adminoption $adminoption)
+    public function edit($adminoption)
     {
-        //
+        $mainCateData = DB::table('adminquestions')->get();
+        //  
+        $cateData = DB::table('adminoptions')
+            ->join('adminquestions', 'adminoptions.ques_id', '=', 'adminquestions.id')
+            ->where('adminoptions.id','=',$adminoption)
+            ->select(['*','adminoptions.id as mainID'])
+            ->get();
+            //print_r($cateData);
+        return view('admin.option.edit',['cate1' => $cateData, 'mainCd' => $mainCateData]);
     }
 
     /**
@@ -96,6 +104,8 @@ class AdminoptionController extends Controller
     public function update(Request $request, adminoption $adminoption)
     {
         //
+        $adminoption->update($request->all());
+        return redirect()->route('admin-option.index')->with('success','option Successfully Edited');
     }
 
     /**
