@@ -157,6 +157,7 @@
             data: {question_id: question_id, category_id: category_id},
             dataType: 'json',
             success: function(event){
+                console.log(event);
                 var html_new = '';
                 html_new += "<option>Choose your next question</option>";
                 for(var i=0; i<event.length; i++){

@@ -122,7 +122,34 @@ class AdmincatequesController extends Controller
 
         $result_set = DB::table('admincateques')->where($where_arr)->count();
         if($result_set == 0){
-            $cate_name = DB::table('adminquestions')->where('id','!=',$data_id)->get();
+            $where_con_arr = [
+                'category_id' => $category_id,
+                'next_ques_id' => $data_id
+            ];
+
+            $checking_next_query = DB::table('admincateques')->where($where_con_arr)->count();
+            if($checking_next_query == 0)
+            {
+                $get_data = [
+                    'category_id' => $category_id
+                ];
+                $checking_next_query1 = DB::table('admincateques')->select(['id','next_ques_id'])->where($get_data)->get();
+
+                $key = array();
+                $key[] = $data_id;
+                foreach ($checking_next_query1 as $key_val) {
+                    $key[] = $key_val->id;
+                    if($key_val->next_ques_id != ''){
+                       $key[] = $key_val->next_ques_id;
+                    }
+                }
+                $cate_name = DB::table('adminquestions')->whereNotIn('id', $key)->get();
+            }
+            else
+            {
+                $cate_name = DB::table('adminquestions')->where('id','!=',$data_id)->get();
+            }
+            
         }else{
             $cate_name = "";
         }
