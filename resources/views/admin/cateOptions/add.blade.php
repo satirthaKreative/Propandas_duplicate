@@ -46,7 +46,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-list"></i>
                                 </div>
-                                <select class="form-control" id="quescate_choosen" name="category_id">
+                                <select class="form-control" id="quescate_choosen" name="category_id" onchange="cateChangeQues()">
                                     <option>Choose a category</option>
                                     @if(count($cate_id))
                                         @foreach($cate_id as $cate_name)
@@ -63,12 +63,13 @@
                                     <i class="fa fa-list"></i>
                                 </div>
                                 <select class="form-control" id="ques_choosen" name="question_id" onchange="quesCateChange()">
-                                    <option>Choose a Question</option>
+                                    <!-- <option>Choose a Question</option>
                                     @if(count($ques_id))
                                         @foreach($ques_id as $ques_name)
                                             <option value="{{ $ques_name->id }}">{{ $ques_name->question_name }}</option>
                                         @endforeach
-                                    @endif
+                                    @endif -->
+                                    <option>choose a category first</option>
                                 </select>
                             </div>
                         </div>
@@ -116,6 +117,7 @@
     </div>
 </section>
 <script>
+    // question wish option list change 21.02.2020
     function quesCateChange()
     {
         var quescatechoose = $("#ques_choosen").val();
@@ -147,6 +149,7 @@
             }
         })
     }
+    //  next question id's set  22.02.2020
     function next_question_ajax()
     {
         var category_id = $("#quescate_choosen").val();
@@ -157,7 +160,7 @@
             data: {question_id: question_id, category_id: category_id},
             dataType: 'json',
             success: function(event){
-                console.log(event);
+                //console.log(event);
                 var html_new = '';
                 html_new += "<option>Choose your next question</option>";
                 for(var i=0; i<event.length; i++){
@@ -165,9 +168,32 @@
                 }
                 $("#next_question_id").html(html_new);
             }, error: function(event){
-                 console.log("error massage come!!!");
+                 console.log("error message come!!!");
             }
         })
     }
+    // category wish question set change 24.02.2020
+    function cateChangeQues()
+    {
+        var cat_id = $("#quescate_choosen").val();
+        $.ajax({
+            url: "/catetoques_ajax",
+            type: "get",
+            data: {cate_id:  cat_id},
+            dataType: "json",
+            success:  function(response){
+                var html_new = '';
+                html_new += "<option>Choose your questions</option>";
+                for(var i=0; i<response.length; i++){
+                    html_new += '<option value="'+response[i].id+'">'+response[i].question_name+'</option>';
+                }
+                $("#ques_choosen").html(html_new);
+            }, error: function(response){
+                console.log("error message come!!!");
+            }  
+        })
+    }
+    
+
 </script>
 @endsection

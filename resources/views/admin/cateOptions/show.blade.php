@@ -1,66 +1,109 @@
 @extends('layouts.backendLayouts.app')
 @section('content')
-<!-- category Show Page -->
+<!-- Category Options add -->
 <section class="content-header">
     <h1>
-        {{ $cateData->category_name }}'s Detail View
-        <small>preview of detail view</small>
+        Category Options Edit
+        <small>Preview</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="javascript: ;"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="javascript: ;">Tables</a></li>
-        <li class="active">Detail View</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">Category Options Forms</li>
     </ol>
 </section>
 <section class="content">
     <div class="row">
-    	<div class="col-md-6">
+        <div class="col-md-6">
 
-    	    <div class="box box-danger">
-    	        <div class="box-header">
-    	            <h3 class="box-title">View Details</h3> <span class="float-right-btn"><a href="{{ route('admin-category.index') }}" class="btn btn-sm btn-success text-white">Detail View</a></span>
-    	        </div>
-    	        <div class="box-body">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">Input Category Options</h3> <span class="float-right-btn"><a href="{{ route('admin-cateques.index') }}" class="btn btn-sm btn-success text-white">View Category Options</a></span>
+                </div>
+                <div class="box-body">
+                    @if($errors->any())
+                    <div class="alert alert-danger">
+                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
+                    @if($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                    <form action="{{ route('admin-cateques.store') }}" method="post">
+                        @csrf
                         <!-- Date dd/mm/yyyy -->
                         <div class="form-group">
                             <label>Category Name:</label>
                             <div class="input-group">
-                                <div class="input-group-addon bg-white">
+                                <div class="input-group-addon">
                                     <i class="fa fa-list"></i>
                                 </div>
-                                <input type="text" class="form-control" name="category_name" value="{{ $cateData->category_name }}"  readonly="readonly" />
+                                @foreach($query_select0 as $fetch_cate)
+                                    <input type="text" readonly="readonly" value="{{ $fetch_cate->category_name }}">
+                                @endforeach
                             </div><!-- /.input group -->
                         </div><!-- /.form group -->
-
-                        <!-- phone mask -->
                         <div class="form-group">
-                            <label>Title:</label>
+                            <label>Category Questions Name:</label>
                             <div class="input-group">
-                                <div class="input-group-addon bg-white">
-                                    <i class="fa fa-eye"></i>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-list"></i>
                                 </div>
-                                <input type="text" class="form-control" name="category_title" value="{{ $cateData->category_title }}" readonly="readonly"  />
-                            </div><!-- /.input group -->
-                        </div><!-- /.form group -->
-
-                        <!-- IP mask -->
-                        <div class="form-group">
-                            <label>Description:</label>
+                                @foreach($query_select1 as $fetch_ques)
+                                    <input type="text" readonly="readonly" value="{{  $fetch_ques->question_name  }}">
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="form-group" id="opt_name_main_div" style="display: none;">
+                            <label>Options Name:</label>
                             <div class="input-group">
-                                <div class="input-group-addon bg-white">
-                                    <i class="fa fa-info"></i>
+                                <div class="input-group-addon">
+                                    <i class="fa fa-list"></i>
                                 </div>
-                                <textarea class="form-control" name="category_description" readonly="readonly"  rows="10">{{ $cateData->category_description }}</textarea>
-                            </div><!-- /.input group -->
-                        </div><!-- /.form group -->
+                                @foreach($query_select2 as $fetch_option)
+                                    <input type="text" readonly="readonly" value="{{  $fetch_option->option_label  }}">
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="form-group" id="priority_number_id">
+                            <label>Priority Number: <b class="text-danger">(*like 1,2,..)</b></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-list"></i>
+                                </div>
+                                @foreach($query_select3 as $fetch_priority)
+                                    <input type="text" readonly="readonly" value="{{  $fetch_priority->ques_priority  }}">
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="form-group" id="next_ques_id">
+                            <label>Next Question:</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-list"></i>
+                                </div>
+                                @foreach($query_select4 as $fetch_next_id)
+                                    <input type="text" readonly="readonly" value="{{  $fetch_next_id->next_ques_id  }}">
+                                @endforeach
+                            </div>
+                        </div>
                         <div class="clearfix">
                             <button class="btn btn-success btn-sm float-right-btn text-white" type="submit">Submit</button>
-                        </div>  
-    	        </div><!-- /.box-body -->
+                        </div>   
+                    </form>
+                </div><!-- /.box-body -->
 
-    	    </div><!-- /.box -->
+            </div><!-- /.box -->
 
-    	</div><!-- /.col (left) -->
+        </div><!-- /.col (left) -->
     </div>
 </section>
 @endsection

@@ -34,5 +34,10 @@ Route::resource('admin-question','Admin\AdminquestionController');
 Route::resource('admin-option','Admin\AdminoptionController');
 Route::resource('admin-cateques','Admin\AdmincatequesController');
 
+// Admin question category ajax
 Route::GET('/quesCateajaxcall','Admin\AdmincatequesController@quesCate_ajaxcall');
 Route::GET('/ques_ajax','Admin\AdmincatequesController@ques_ajax');
+Route::GET('/catetoques_ajax','Admin\AdmincatequesController@catetoques_ajax');
+
+// Admin option ajax
+Route::GET('/option_type_ajax','Admin\AdminoptionController@option_type_ajax');

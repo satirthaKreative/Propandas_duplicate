@@ -116,7 +116,7 @@ class AdminoptionController extends Controller
      */
     public function destroy($adminoption)
     {
-        $post =adminoption::where('id',$adminoption)->first();
+        $post = adminoption::where('id',$adminoption)->first();
         
         if ($post != null) {
             $post->delete();
@@ -124,5 +124,29 @@ class AdminoptionController extends Controller
         }
         return redirect()->route('admin-option.index')->with('danger','Wrong id requested');
 
+    }
+    // option type checking ajax data 
+    public function option_type_ajax()
+    {
+        $q_type_id = $_GET['q_type'];
+
+        $fetch_qData = DB::table('adminquestions')->where('id',$q_type_id)->get();
+
+        foreach ($fetch_qData as $key_value) {
+            $main_type_id = $key_value->question_type; 
+        }
+
+        if($main_type_id == 1 || $main_type_id == 3)
+        {
+            $no_error['main_data'] = true;
+            if($main_type_id == 1){
+                $no_error['main_sec_msg'] = "This Question Option Having A Text Type";
+            }else if($main_type_id == 3){
+                $no_error['main_sec_msg'] = "This Question Option Having A Textarea Type";
+            }
+        }else{
+            $no_error['main_data'] = false;
+        }
+        echo  json_encode( $no_error );
     }
 }
