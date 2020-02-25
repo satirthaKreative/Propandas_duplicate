@@ -20,3 +20,8 @@
 /* Feb 20 */
 .main-contain-class span{ display: table; width: 100%; text-align: right; padding-top: 5px;}
 .main-contain-class span i.fa{ background: #ddd; padding: 9px 11px; margin: 0 0 7px 10px; }
+/* Feb 25 */
+option:disabled {
+    color: #5a3a3a;
+    background: #eee;
+}

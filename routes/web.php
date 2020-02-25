@@ -38,6 +38,10 @@ Route::resource('admin-cateques','Admin\AdmincatequesController');
 Route::GET('/quesCateajaxcall','Admin\AdmincatequesController@quesCate_ajaxcall');
 Route::GET('/ques_ajax','Admin\AdmincatequesController@ques_ajax');
 Route::GET('/catetoques_ajax','Admin\AdmincatequesController@catetoques_ajax');
+Route::GET('/ques_opt_ajax','Admin\AdmincatequesController@ques_opt_ajax');
+Route::GET('/checking_priority_with_count','Admin\AdmincatequesController@checking_priority_with_count');
+Route::GET('/category_priority','Admin\AdmincatequesController@category_priority');
+Route::GET('/optionchange_method_ajax','Admin\AdmincatequesController@optionchange_method_ajax');
 
 // Admin option ajax
 Route::GET('/option_type_ajax','Admin\AdminoptionController@option_type_ajax');
