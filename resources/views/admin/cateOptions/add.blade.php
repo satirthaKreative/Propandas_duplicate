@@ -147,7 +147,7 @@
                         success: function(response){
                             var html = '';
                             html += '<option>Choose a options</option>';
-                            for(var i=0;i<= resp.length;i++)
+                            for(var i=0;i< resp.length;i++)
                             {
                                 if(jQuery.inArray((i+1),response) !== -1){
                                     var dataTCheck = "disabled";
@@ -192,7 +192,6 @@
             data: {question_id: question_id, category_id: category_id},
             dataType: 'json',
             success: function(event){
-                console.log(event);
                 var html_new = '';
                 html_new += "<option>Choose your next question</option>";
                 for(var i=0; i<event.length; i++){
@@ -210,7 +209,7 @@
         var cat_id = $("#quescate_choosen").val();
         $.ajax({
             url: "/catetoques_ajax",
-            type: "get",
+            type: "GET",
             data: {cate_id:  cat_id},
             dataType: "json",
             success:  function(response){

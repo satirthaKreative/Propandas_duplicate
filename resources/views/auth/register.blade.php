@@ -61,6 +61,15 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Choose User Tpe') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="radio" name="is_laywer"  value="1"> I'm a laywer
+                                <input type="radio" name="is_laywer" value="0"> I'm a customer
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

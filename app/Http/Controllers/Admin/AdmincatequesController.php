@@ -53,11 +53,23 @@ class AdmincatequesController extends Controller
         $option_id = $request->input('option_id');
         $ques_priority = $request->input('ques_priority');
         $next_ques_id = $request->input('next_ques_id');
-
-
-        print_r($priority_avail);
-        // admincateques::create($request->all());
-        // return redirect()->route('admin-cateques.create')->with('success','Question Successfully Added');
+        if($ques_priority != '')
+        {
+            $myOpt =  $ques_priority;
+        }
+        else
+        {
+            $myOpt =  0;
+        }
+        admincateques::create([
+            'category_id' => $category_id,
+            'question_id' => $question_id,
+            'option_id' => $option_id,
+            'check_yn' => $priority_avail,
+            'ques_priority' => $myOpt,
+            'next_ques_id' => $next_ques_id,
+        ]);
+        return redirect()->route('admin-cateques.create')->with('success','Question Successfully Added');
     }
 
     /**
@@ -171,18 +183,32 @@ class AdmincatequesController extends Controller
 
                 $key = array();
                 $key[] = $data_id;
+               
                 foreach ($checking_next_query1 as $key_val) {
                     $key[] = $key_val->question_id;
+                    
                     if($key_val->next_ques_id != ''){
                        $key[] = $key_val->next_ques_id;
                     }
                 }
-              
+                
                 $cate_name = DB::table('adminquestions')->whereNotIn('id', $key)->get();
             }
             else
             {
-                $cate_name = DB::table('adminquestions')->where('id','!=',$data_id)->get();
+                $fetchQc = DB::table('admincateques')->where(['next_ques_id' => $data_id, 'category_id' => $category_id])->get();
+                $countQc = DB::table('admincateques')->where(['next_ques_id' => $data_id, 'category_id' => $category_id])->count();
+
+                if($countQc){
+                    $key =  array();
+                    $key[] = $data_id;
+                    foreach ($fetchQc as $key_value) {
+                        $key[] = $key_value->question_id;
+                    }
+                    $cate_name = DB::table('adminquestions')->whereNotIn('id', $key)->get();
+                }else{
+                    $cate_name = DB::table('adminquestions')->where('id','!=',$data_id)->get();
+                }
             }
             
         }else{
@@ -202,9 +228,9 @@ class AdmincatequesController extends Controller
         if($count_qc_rows > 0){
             foreach ($fetch_qc_datas as $key_value) {
 
-                $checking_count_ques = DB::table('admincateques')->where('id',$key_value->question_id)->count();
+                $checking_count_ques = DB::table('admincateques')->where('question_id',$key_value->question_id)->count();
                 $checking_count_main_qOptions = DB::table('adminoptions')->where('ques_id',$key_value->question_id)->count();
-                if($checking_count_ques > $checking_count_main_qOptions){
+                if($checking_count_ques >= $checking_count_main_qOptions){
                     $myQitems[] = $key_value->question_id;
                 }
             }
@@ -213,6 +239,7 @@ class AdmincatequesController extends Controller
         }else{
             $fetch_q_datas = DB::table('adminquestions')->get();
         }
+
         echo json_encode($fetch_q_datas);
     }
 
@@ -232,11 +259,12 @@ class AdmincatequesController extends Controller
             'question_id' => $question_id,
             'category_id' => $category_id,
         );
+        $count_array = array();
 
         $countPriority = DB::table('admincateques')->where($condition1)->count();
         if($countPriority > 0){
             $getPriority = DB::table('admincateques')->where($condition1)->get();
-            $count_array = array();
+            
 
             foreach ($getPriority as $key_value) {
                 $count_array[] = $key_value->ques_priority; 
@@ -244,6 +272,8 @@ class AdmincatequesController extends Controller
 
             echo json_encode($count_array);
 
+        }else{
+            echo json_encode($count_array);
         }
 
     }
