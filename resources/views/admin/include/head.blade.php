@@ -11,6 +11,8 @@
         <link href="{{ asset('backendAssets/css/AdminLTE.css') }}" rel="stylesheet" type="text/css" />
         <!-- Custom Style -->
         <link href="{{ asset('backendAssets/css/custom.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Select Style -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>

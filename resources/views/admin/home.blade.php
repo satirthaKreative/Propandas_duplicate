@@ -21,17 +21,17 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>
-                        150
+                    <h3 id="dash-cate-count">
+                        0
                     </h3>
                     <p>
-                        New Orders
+                        Category
                     </p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="#" class="small-box-footer">
+                <a href="{{ route('admin-category.index') }}" class="small-box-footer">
                     More info <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
@@ -40,17 +40,17 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3>
-                        53<sup style="font-size: 20px">%</sup>
+                    <h3 id="dash-ques-count">
+                        0<!-- <sup style="font-size: 20px">%</sup> -->
                     </h3>
                     <p>
-                        Bounce Rate
+                        Questions
                     </p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">
+                <a href="{{ route('admin-question.index') }}" class="small-box-footer">
                     More info <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>

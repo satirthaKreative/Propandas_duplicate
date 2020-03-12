@@ -81,18 +81,18 @@ class AdmincatequesController extends Controller
     public function show($admincateques)
     {
         //
-        $main_fetch_query = DB::table('admincateques')->where('id',$admincateques)->get();
+        $main_fetch_query = DB::table('admincateques')->where('id',$admincateques)->first();
         // get all ids
-        foreach ($main_fetch_query as $key_val) {
+       
             # category id
-            $categoty_f_id = $key_val->category_id;
+            $categoty_f_id = $main_fetch_query->category_id;
             # question id
-            $question_f_id = $key_val->question_id;
+            $question_f_id = $main_fetch_query->question_id;
             # option_id
-            $option_f_id = $key_val->option_id;
+            $option_f_id = $main_fetch_query->option_id;
             # next question id
-            $next_ques_f_id = $key_val->next_ques_id;
-        }
+            $next_ques_f_id = $main_fetch_query->next_ques_id;
+       
         #category fetch
         $query_select0 = DB::table('admincategories')->where('id',$categoty_f_id)->get();
         #question fetch
@@ -104,6 +104,7 @@ class AdmincatequesController extends Controller
         #question fetch
         $query_select4 = DB::table('adminquestions')->where('id',$next_ques_f_id)->get();
 
+        // print_r($query_select0);
 
         return view('admin.cateOptions.show',['cate_opt' => $query_select0, 'ques_opt' => $query_select1, 'opt_opt' => $query_select2, 'priority_opt' => $query_select3, 'next_question_opt' => $query_select4]);
 

@@ -1,5 +1,18 @@
 </div><!-- ./wrapper -->
 
+<!-- success div -->
+<div class="modal" id="succ-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">      
+      <div class="modal-body">
+        <h2><span><i class="fa fa-check" aria-hidden="true"></i></span>Successfully Done</h2>     
+      </div>      
+    </div>
+  </div>
+</div>
+
+<!-- end of succes div -->
+
         <!-- add new calendar event modal -->
 
 
@@ -18,3 +31,7 @@
 
         <!-- custom admin js -->
         <script src="{{ asset('backendAssets/js/admin-custom.js') }}" type="text/javascript"></script>  
+
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+        <script src="{{ asset('backendAssets/js/mySelect.js') }}" type="text/javascript"></script>

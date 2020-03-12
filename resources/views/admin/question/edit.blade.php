@@ -46,8 +46,9 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-list"></i>
                                 </div>
-                                <input type="text" class="form-control"  name="question_name" value="{{ $cateData->question_name }}" />
+                                <input type="text" class="form-control" id="ques_ajax_name" onkeyup="checking_question_exist(<?= $cateData->id ?>)" name="question_name" value="{{ $cateData->question_name }}" />
                             </div><!-- /.input group -->
+                            <span class="text-danger"></span>
                         </div><!-- /.form group -->
 
                         <!-- phone mask -->

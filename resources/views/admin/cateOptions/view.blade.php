@@ -51,7 +51,7 @@
                                 <td>
                                     <form action="{{ route('admin-cateques.destroy',$cateData->id) }}" method="post">
                                         <a href="{{ route('admin-cateques.show',$cateData->id) }}" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a> 
-                                        <a href="{{ route('admin-cateques.edit',$cateData->id) }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                        <!-- <a href="{{ route('admin-cateques.edit',$cateData->id) }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a> -->
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-danger" type="submit"><i class="fa fa-trash-o"></i></button>

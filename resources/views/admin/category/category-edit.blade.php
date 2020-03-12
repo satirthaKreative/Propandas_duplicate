@@ -47,8 +47,9 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-list"></i>
                                 </div>
-                                <input type="text" class="form-control" name="category_name" value="{{ $cateData->category_name }}" />
+                                <input type="text" class="form-control" id="category_name_check" name="category_name" value="{{ $cateData->category_name }}" onkeyup="checking_pre_add(<?= $cateData->id ?>)"/>
                             </div><!-- /.input group -->
+                            <span class="text-danger"></span>
                         </div><!-- /.form group -->
 
                         <!-- phone mask -->

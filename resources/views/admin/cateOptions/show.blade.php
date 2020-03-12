@@ -46,8 +46,8 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-list"></i>
                                 </div>
-                                @foreach($query_select0 as $fetch_cate)
-                                    <input type="text" readonly="readonly" value="{{ $fetch_cate->category_name }}">
+                                @foreach($cate_opt as $fetch_cate)
+                                    <input type="text" class="form-control" readonly="readonly" value="{{ $fetch_cate->category_name }}">
                                 @endforeach
                             </div><!-- /.input group -->
                         </div><!-- /.form group -->
@@ -57,8 +57,8 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-list"></i>
                                 </div>
-                                @foreach($query_select1 as $fetch_ques)
-                                    <input type="text" readonly="readonly" value="{{  $fetch_ques->question_name  }}">
+                                @foreach($ques_opt as $fetch_ques)
+                                    <input type="text" class="form-control" readonly="readonly" value="{{  $fetch_ques->question_name  }}">
                                 @endforeach
                             </div>
                         </div>
@@ -68,8 +68,8 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-list"></i>
                                 </div>
-                                @foreach($query_select2 as $fetch_option)
-                                    <input type="text" readonly="readonly" value="{{  $fetch_option->option_label  }}">
+                                @foreach($opt_opt as $fetch_option)
+                                    <input type="text" class="form-control" readonly="readonly" value="{{  $fetch_option->option_label  }}">
                                 @endforeach
                             </div>
                         </div>
@@ -79,8 +79,8 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-list"></i>
                                 </div>
-                                @foreach($query_select3 as $fetch_priority)
-                                    <input type="text" readonly="readonly" value="{{  $fetch_priority->ques_priority  }}">
+                                @foreach($priority_opt as $fetch_priority)
+                                    <input type="text" class="form-control" readonly="readonly" value="{{  $fetch_priority->ques_priority  }}">
                                 @endforeach
                             </div>
                         </div>
@@ -90,13 +90,10 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-list"></i>
                                 </div>
-                                @foreach($query_select4 as $fetch_next_id)
-                                    <input type="text" readonly="readonly" value="{{  $fetch_next_id->next_ques_id  }}">
+                                @foreach($next_question_opt as $fetch_next_id)
+                                    <input type="text" class="form-control" readonly="readonly" value="{{  $fetch_next_id->question_name  }}">
                                 @endforeach
                             </div>
-                        </div>
-                        <div class="clearfix">
-                            <button class="btn btn-success btn-sm float-right-btn text-white" type="submit">Submit</button>
                         </div>   
                     </form>
                 </div><!-- /.box-body -->

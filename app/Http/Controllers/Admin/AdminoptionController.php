@@ -86,7 +86,7 @@ class AdminoptionController extends Controller
         $mainCateData = DB::table('adminquestions')->get();
         //  
         $cateData = DB::table('adminoptions')
-            ->join('adminquestions', 'adminoptions.ques_id', '=', 'adminquestions.id')
+            ->RightJoin('adminquestions', 'adminoptions.ques_id', '=', 'adminquestions.id')
             ->where('adminoptions.id','=',$adminoption)
             ->select(['*','adminoptions.id as mainID'])
             ->get();
@@ -101,10 +101,13 @@ class AdminoptionController extends Controller
      * @param  \App\adminoption  $adminoption
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, adminoption $adminoption)
+    public function update(Request $request, $adminoption)
     {
         //
-        $adminoption->update($request->all());
+        $request->validate([
+            'question_description' => 'required'
+        ]);
+        DB::table('adminoptions')->where('id',$adminoption)->update(['option_label' => $request['question_description'], 'ques_id' => $request['question_type']]);
         return redirect()->route('admin-option.index')->with('success','option Successfully Edited');
     }
 

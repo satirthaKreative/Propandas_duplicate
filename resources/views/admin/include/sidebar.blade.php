@@ -6,7 +6,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{ asset('backendAssets/img/avatar3.png') }}" class="img-circle" alt="User Image" />
+                    <img src="{{ asset('backendAssets/img/avatar.png') }}" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
                     <p>Hello, Admin</p>
@@ -17,7 +17,7 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="active">
-                    <a href="javascript: ;">
+                    <a href="{{ route('admin.home') }}">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
