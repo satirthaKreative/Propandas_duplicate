@@ -17,9 +17,9 @@ class CreateAdminfreelegaldocxesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('cate_id');
             $table->enum('is_upload',array('0','1'))->default('0');
-            $table->longText('uploaded_path');
-            $table->longText('uploaded_text');
-            $table->text('uploaded_type');
+            $table->longText('uploaded_path')->nullable();
+            $table->longText('uploaded_text')->nullable();
+            $table->text('uploaded_type')->nullable();
             $table->timestamps();
         });
     }

@@ -75,7 +75,7 @@ $(function(){
         },
         error: function(event)
         {
-            console.log('errors');
+            console.log('errors on line 59');
         }
     })
     // new questions show
@@ -98,7 +98,7 @@ $(function(){
         },
         error: function(event)
         {
-            console.log('errors');
+            console.log('errors on line 81');
         }
     })
     // all category fetch
@@ -108,8 +108,6 @@ $(function(){
         dataType: 'json',
         success:  function(event)
         {
-            console.log(event);
-
             var html = '';
             for(var i = 0; i < event.length; i++)
             {
@@ -119,10 +117,12 @@ $(function(){
         },
         error: function(event)
         {
-            console.log('errors');
+            console.log('errors on line 104');
         }
     })
 });
+
+
 
 
 

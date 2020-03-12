@@ -35,3 +35,8 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
         <script src="{{ asset('backendAssets/js/mySelect.js') }}" type="text/javascript"></script>
+
+        <script src="{{ asset('backendAssets/js/checked.js') }}" type="text/javascript"></script>
+
+        <!-- ckeditor -->
+        <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>

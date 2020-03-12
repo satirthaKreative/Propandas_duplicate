@@ -69,6 +69,18 @@
                        
                     </ul>
                 </li>
+                <!-- Free Legal Docx -->
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-file"></i>
+                        <span>Free Legal Documents</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('admin-freelegaldoc.index') }}"><i class="fa fa-angle-double-right"></i>View Category questions</a></li>
+                       
+                    </ul>
+                </li>
             </ul>
         </section>
         <!-- /.sidebar -->

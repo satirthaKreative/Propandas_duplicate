@@ -271,14 +271,25 @@ option:disabled {
 }
 
 
-.input-group .select2{
-    
-    border: solid 1px #ddd;
+.input-group .select2{  
     border-radius: 0px;   
 
 }
 
 .input-group .select2 .select2-selection--multiple {   
-    border: none;
-    border-radius: 0px;   
+    border: 1px solid #cecdcd !important;
+    border-radius: 0px;
+    outline: none!important;
+}
+
+.box-danger input[type="checkbox"]
+{
+    margin-right: 5px;
+    margin-top: 4px;
+    float: left;
+}
+
+.input-group textarea.form-control,.input-group input.form-control, .input-group select.form-control  {   
+    border: 1px solid #cecdcd !important;    
+    outline: none!important;
 }

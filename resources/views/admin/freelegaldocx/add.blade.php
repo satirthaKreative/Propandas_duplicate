@@ -18,7 +18,7 @@
 
     	    <div class="box box-danger">
     	        <div class="box-header">
-    	            <h3 class="box-title">Input Category</h3> <span class="float-right-btn"><a href="{{ route('admin-category.index') }}" class="btn btn-sm btn-success text-white">View Category</a></span>
+    	            <h3 class="box-title">Input Legal Docx</h3> <span class="float-right-btn"><a href="{{ route('admin-freelegaldoc.index') }}" class="btn btn-sm btn-success text-white">View Legal Docx</a></span>
     	        </div>
     	        <div class="box-body">
                     @if($errors->any())
@@ -37,7 +37,7 @@
                             <strong>{{ $message }}</strong>
                         </div>
                     @endif
-    	            <form action="{{ route('admin-category.store') }}" method="post">
+    	            <form action="{{ route('admin-freelegaldoc.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <!-- Date dd/mm/yyyy -->
                         <div class="form-group">
@@ -46,21 +46,27 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-list"></i>
                                 </div>
-                                <select class="multi-cate form-control" name="category_types[]" multiple="multiple">
-                                  <option value="AL">Alabama</option>
-                                  <option value="WY">Wyoming</option>
+                                <select class="multi-cate form-control" name="category_name[]" multiple="multiple">
+                                  
                                 </select>
                             </div><!-- /.input group -->
                         </div><!-- /.form group -->
 
                         <!-- phone mask -->
-                        <div class="form-group">
-                            <label>Title:</label>
+                        <div class="form-group" >                           
+                            <div class="input-group">                               
+                                <input type="checkbox" id="docx_download" name="docx_download" onclick="docx_download_check()" value="0">
+                                <label for="scales">is_uploaded</label>
+                            </div><!-- /.input group -->
+                        </div><!-- /.form group -->
+
+                        <div class="form-group" id="upload_docx">
+                            <label>Upload File:</label>
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <i class="fa fa-eye"></i>
+                                    <i class="fa fa-file"></i>
                                 </div>
-                                <input type="text" class="form-control" name="category_title" />
+                                <input type="file" name="upload" class="form-control">
                             </div><!-- /.input group -->
                         </div><!-- /.form group -->
 
@@ -71,7 +77,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-info"></i>
                                 </div>
-                                <textarea class="form-control" name="category_description" rows="10"></textarea>
+                                <textarea class="form-control" name="docx_details" id="docx-show-details" rows="10"></textarea>
                             </div><!-- /.input group -->
                         </div><!-- /.form group -->
                         <div class="clearfix">
@@ -85,4 +91,5 @@
     	</div><!-- /.col (left) -->
     </div>
 </section>
+
 @endsection
